@@ -1,0 +1,129 @@
+<div class="eb-dashboard">
+  <header class="eb-header">
+    <div class="eb-header__status">
+      <span class="eb-status-dot {{connectionStatus}}"></span>
+      <span class="eb-status-label">{{statusLabel}}</span>
+    </div>
+    <h1 class="eb-header__title">EmpireBuilder</h1>
+    <div class="eb-header__player">
+      <strong class="eb-player-name">{{playerName}}</strong>
+    </div>
+  </header>
+
+  <div class="eb-player-switcher">
+    <input
+      class="eb-player-switcher__input"
+      type="text"
+      placeholder="Enter member name"
+      value="{{playerName}}"
+    />
+    <button class="eb-player-switcher__btn">Switch</button>
+  </div>
+
+    <div class="top-bar">
+        <div class="top-bar-back"> &#60; Back</div>
+        <div class="top-bar-label"> &#183; 28 Days Remaining</div>
+    </div>
+
+    <div class="hero">
+      <div class="top-logo"></div>
+      <div class="top-description">Earn Tier Credits Online To Unlock Rewards</div>
+      <div class="top-info-icon"></div>
+    </div>
+
+    <div class="stages">
+      <div class="stages-wrapp">
+        {{#if stages.length}}
+          {{#each stages}}
+            <div class="stage-item-wrapp" data-id="{{#if id}}{{ id }}{{else if entityId}}{{ entityId }}{{/if}}">
+              <div class="stage-item" {{#if iconLink}} style="background-image: url({{ iconLink }})" {{/if}}>
+                {{#if isCompleted}}
+                  <div class="stage-item-completed">
+                    <div class="stage-item-completed-label">COMPLETE</div>
+                  </div>
+                {{/if}}
+              </div>
+
+              <div class="stage-item-progress {{#if isCompleted}} completed {{/if}} {{#if @first}} no-before {{/if}}">
+                {{#if isCompleted}}
+                  COMPLETE
+                {{else}}
+                  {{#if optInStatus.percentageComplete}}{{ optInStatus.percentageComplete }}{{else}}0{{/if}}/100
+                {{/if}}
+              </div>
+            </div>
+
+            <div class="reward-item-wrapp" data-id="{{ reward.id }}">
+              <div class="reward-item" {{#if reward.iconLink}} style="background-image: url({{ reward.iconLink }})" {{/if}}>
+                <div class="reward-item-title">{{ reward.name }}</div>
+                <div class="stage-item-completed">
+                  <div class="stage-item-completed-label">CLAIMED</div>
+                </div>
+              </div>
+
+              <div class="stage-item-progress {{#if @last}} no-after {{/if}}">-</div>
+            </div>
+
+          {{/each}}
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="award-wrapp">
+      <div class="award">
+        <div class="award-description">
+          <div class="award-description-icon"></div>
+          <div class="award-description-data">
+            <div class="award-description-active">Active Bonus</div>
+            <div class="award-description-title">1% Reward Credit Boost</div>
+          </div>
+          <div class="award-description-action"></div>
+        </div>
+        <div class="award-data">
+          <div class="award-data-date">Awarded on 3/1/26:</div>
+          <div class="award-data-value">40 Reward Credits</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="bottom-action-wrapp">
+    <div class="bottom-action">Start Playing</div>
+  </div>
+
+  <div class="completed-drawer-wrapp">
+    <div class="completed-drawer">
+      <div class="completed-drawer-close"></div>
+      <div class="completed-drawer-header">
+        <div class="completed-drawer-header-icon"></div>
+        <div class="completed-drawer-header-text">
+          <div class="completed-drawer-header-title">YOU DID IT</div>
+          <div class="completed-drawer-header-description">Empire Builder Complete</div>
+        </div>
+      </div>
+      <div class="completed-drawer-content">
+        <div class="completed-drawer-content-title">Your Reward Credit Boost is still active!</div>
+        <div class="completed-drawer-content-description">Keep earning Reward Credits for a bigger final prize!</div>
+
+        <div class="award-wrapp">
+          <div class="award">
+            <div class="award-description">
+              <div class="award-description-icon"></div>
+              <div class="award-description-data">
+                <div class="award-description-active">Active Bonus</div>
+                <div class="award-description-title">1% Reward Credit Boost</div>
+              </div>
+              <div class="award-description-action"></div>
+            </div>
+            <div class="award-data">
+              <div class="award-data-date">Awarded on 3/1/26:</div>
+              <div class="award-data-value">40 Reward Credits</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="completed-drawer-action">View Reward History</div>
+      </div>
+
+    </div>
+  </div>
+</div>
